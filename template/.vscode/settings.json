@@ -1,0 +1,19 @@
+{
+  "[php]": {
+    "editor.formatOnSave": true
+  },
+  "css.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "eslint.validate": ["javascript"],
+  "javascript.validate.enable": false,
+  "search.exclude": {
+    "**/wp-admin": true,
+    "**/wp-content/languages": true,
+    "**/wp-content/plugins": true,
+    "**/wp-content/themes/twenty*": true,
+    "**/wp-includes": true
+  }
+}
