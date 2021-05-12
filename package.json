@@ -12,8 +12,7 @@
   },
   "files": [
     "index.js",
-    "template",
-    "template-*"
+    "template"
   ],
   "bin": {
     "create-wordpress": "index.js"
