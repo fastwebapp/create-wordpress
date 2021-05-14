@@ -10,12 +10,12 @@ wp core install \
   --allow-root
 
 # 日本語化
-wp language core install ja --activate --allow-root
+wp language core install "$WORDPRESS_LANGUAGE" --activate --allow-root
 
 # 一般設定
 wp option update blogdescription "" --allow-root
 wp option update siteurl "http://localhost/wp" --allow-root
-wp option update timezone_string "Asia/Tokyo" --allow-root
+wp option update timezone_string "$WORDPRESS_TIMEZONE" --allow-root
 wp option update date_format "Y-m-d" --allow-root
 wp option update time_format "H:i" --allow-root
 wp option update start_of_week "0" --allow-root
