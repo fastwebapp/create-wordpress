@@ -1,7 +1,7 @@
 # プロジェクト名
 プロジェクトに合わせて適宜内容を変更してください。
 
-<!---------------------------------><br>
+<!------------------------------------->
 
 ## 開発環境
 
@@ -17,86 +17,73 @@
 - [stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-<!---------------------------------><br>
+<!------------------------------------->
 
 ## ディレクトリ・ファイル構成
 
 ### リポジトリ内の配置
 
 ```
-├── .vscode
-├── docker ①
+├── docker (1)
 │   ├── mysql
 │   │   └── init.sql
 │   └── wordpress
 │       └── init.sh
-├── node_modules
-├── public ②
+├── public (2)
 │   ├── wp
 │   ├── .htaccess
 │   └── index.php
-├── vendor ③
-├── .editorconfig
-├── .env ④
-├── .env.sample
-├── .eslintrc.json
-├── .gitattributes
-├── .gitignore
-├── .prettierrc.json
-├── .stylelintrc.json
-├── composer.json ⑤
-├── composer.lock ⑥
-├── docker-compose.yml
-├── package-lock.json
-├── package.json
-└── README.md
+├── vendor (3)
+├── .env (4)
+├── composer.json (5)
+└── composer.lock (6)
 ```
 
 ### Dockerコンテナ内の配置
 
 ```
-├── docker ①
+├── docker (1)
 │   ├── mysql
 │   │   └── init.sql
 │   └── wordpress
 │       └── init.sh
 └── var
     └── www
-         ├── html ②
+         ├── html (2)
          │   ├── wp    
          │   ├── .htaccess
          │   └── index.php
-         ├── vendor ③
-         ├── .env ④
-         ├── composer.json ⑤
-         └── composer.lock ⑥
+         ├── vendor (3)
+         ├── .env (4)
+         ├── composer.json (5)
+         └── composer.lock (6)
 ```
 
 ### 主なファイル・ディレクトリ
 
 | パス | 説明 |
 | - | - |
-| `docker/mysql/init.sql` | Dockerコンテナの起動時にインポートされるMySQLのダンプファイル |
+| `docker/mysql/init.sql` | Dockerコンテナの起動時に実行されるSQLファイル |
 | `docker/wordpress/init.sh` | WordPressのインストール用のスクリプト |
 | `public` | ウェブサーバのドキュメントルート |
 | `public/wp` | WordPressのインストール場所 |
+| `vendor` | Composerパッケージのインストール場所 |
 | `.env` | 環境変数の設定 |
 | `composer.json` | Composerパッケージの設定 |
-| `vendor` | Composerパッケージのインストール場所 |
-| `package.json` | npmパッケージの設定 |
-| `node_modules` | npmパッケージのインストール場所 |
 
-<!---------------------------------><br>
+<!------------------------------------->
 
-## 環境設定 (初回のみ)
+## セットアップ (初回のみ)
 
-### 環境変数の設定
+### 環境変数
 
 `.env` が無い場合は `.env.sample` をコピーして作成します。
 
 | 環境変数 | 値 | 説明 |
 | - | - | - |
 | WORDPRESS_DEBUG | デバッグの有効化 | `0`: 無効、`1`: 有効 |
+| WORDPRESS_LANGUAGE | [サイトの言語](https://make.wordpress.org/polyglots/teams/) | 初期化時に使用 |
+| WORDPRESS_TIMEZONE | [サイトのタイムゾーン](https://www.php.net/manual/en/timezones.php) | 初期化時に使用 |
 | WORDPRESS_ADMIN_USER | 管理者のユーザー名 | 初期化時に使用 |
 | WORDPRESS_ADMIN_PASSWORD | 管理者のパスワード | 初期化時に使用 |
 | WORDPRESS_ADMIN_EMAIL | 管理者のメールアドレス | 初期化時に使用 |
@@ -107,13 +94,13 @@
 npm install
 ```
 
-<!---------------------------------><br>
+<!------------------------------------->
 
-## 初期化 (プロジェクト作成時)
+## WordPressの初期化
 
-### Dockerコンテナを起動
+### WordPressの構成ファイルを生成
 
-初回起動時は `public/wp` にWordPressの構成ファイルが生成されます。
+Dockerコンテナの初回起動時に `public/wp` の配下にWordPressに必要なファイルが自動生成されます。
 
 ```sh
 docker-compose up -d
@@ -128,7 +115,7 @@ docker-compose up -d
 docker-compose exec -u www-data wordpress bash /docker/wordpress/init.sh
 ```
 
-<!---------------------------------><br>
+<!------------------------------------->
 
 ## 使い方
 
@@ -160,7 +147,7 @@ wp search-replace https://example.com http://localhost
 例）データベースをエクスポート
 
 ```sh
-wp db export /docker/tmp/example.sql
+wp db export /docker/mysql/example.sql
 ```
 
 Dockerコンテナから出る
@@ -181,11 +168,11 @@ docker-compose exec -u www-data wordpress wp db export /docker/mysql/init.sql
 docker-compose down -v
 ```
 
-<!---------------------------------><br>
+<!------------------------------------->
 
 ## Composer
 
-WordPressの他にPHPライブラリが必要な場合に使用できます。
+WordPressの他にPHPライブラリが必要な場合に使用します。
 
 ### パッケージのインストール
 
