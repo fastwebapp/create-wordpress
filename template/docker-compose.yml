@@ -9,12 +9,12 @@ services:
       - 80:80
     working_dir: /var/www/html/wp
     volumes:
+      - ./docker:/docker
       - ./public:/var/www/html
+      - ./vendor:/var/www/vendor
       - ./.env:/var/www/.env
       - ./composer.json:/var/www/composer.json
       - ./composer.lock:/var/www/composer.lock
-      - ./vendor:/var/www/vendor
-      - ./docker:/docker
     env_file: .env
     environment:
       WORDPRESS_DB_NAME: wordpress
@@ -55,11 +55,11 @@ services:
     ports:
       - 1025:1025
       - 8025:8025
+    volumes:
+      - mailhog:/tmp
     environment:
       MH_STORAGE: maildir
       MH_MAILDIR_PATH: /tmp
-    volumes:
-      - mailhog:/tmp
 
 volumes:
   phpmyadmin:
