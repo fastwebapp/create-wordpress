@@ -1,14 +1,16 @@
 # @fastwebapp/create-wordpress
 
-<!---------------------------------><br>
+[![Publish npm package](https://github.com/fastwebapp/create-wordpress/actions/workflows/publish-npm-package.yml/badge.svg)](https://github.com/fastwebapp/create-wordpress/actions/workflows/publish-npm-package.yml)
+
+<!------------------------------------->
 
 ## Installation
 
 ```sh
-npx @fastwebapp/create-wordpress
+npm init @fastwebapp/wordpress
 ```
 
-<!---------------------------------><br>
+<!------------------------------------->
 
 ## License
 
