@@ -4,7 +4,7 @@
 
 <!------------------------------------->
 
-## Installation
+## Usage
 
 ```sh
 npm init @fastwebapp/wordpress
