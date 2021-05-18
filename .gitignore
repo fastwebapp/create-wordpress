@@ -183,3 +183,9 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,node,windows
+
+### Project ###
+template/package-lock.json
+template/public/wp/*
+template/vendor
+!template/public/wp/.htaccess
