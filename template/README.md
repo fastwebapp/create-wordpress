@@ -10,12 +10,12 @@
 - [Docker](https://www.docker.com/products/docker-desktop)
 - [Node.js](https://nodejs.org/ja/)
 
-### 推奨 (VS Codeの拡張機能)
+### 推奨（VS Codeの拡張機能）
 
-- [EditorConfig](https://marketplace.visualstudio.com/items?itemName=editorconfig.editorconfig)
+- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=editorconfig.editorconfig)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 <!------------------------------------->
 
@@ -73,7 +73,7 @@
 
 <!------------------------------------->
 
-## セットアップ (初回のみ)
+## セットアップ（初回のみ）
 
 ### 環境変数
 
@@ -98,7 +98,7 @@ npm install
 
 ## WordPressの初期化
 
-### WordPressの構成ファイルを生成
+### WordPressのコアファイルを生成
 
 Dockerコンテナの初回起動時に `public/wp` の配下にWordPressに必要なファイルが自動生成されます。
 
@@ -114,6 +114,20 @@ docker-compose up -d
 ```sh
 docker-compose exec -u www-data wordpress bash /docker/wordpress/init.sh
 ```
+
+不要な初期テーマとプラグインは削除、いくつかの設定項目の初期値が変更されます。
+
+| 設定項目 | 設定値 | 初期値 |
+| - | - | - |
+| 一般 &raquo; 日付形式 | `Y-m-d` | カスタム `F j, Y` |
+| 一般 &raquo; 時刻形式 | `H:i` | カスタム `g:i a` |
+| 一般 &raquo; 週の始まり | 日曜日 | 月曜日 |
+| ディスカッション &raquo; デフォルトの投稿設定 | すべてOFF | すべてON |
+| メディア &raquo; サムネイルのサイズ &raquo; 幅 | `0` | `150` |
+| メディア &raquo; サムネイルのサイズ &raquo; 高さ | `0` | `150` |
+| メディア &raquo; 中サイズ &raquo; 幅の上限 | `0` | `300` |
+| メディア &raquo; 中サイズ &raquo; 高さの上限 | `0` | `300` |
+| パーマリンク設定 &raquo; 共通設定 | カスタム構造 `/%post_id%/` | 日付と投稿名 |
 
 <!------------------------------------->
 
@@ -138,13 +152,13 @@ docker-compose up -d
 docker-compose exec -u www-data wordpress bash
 ```
 
-例）データベースを検索して置換
+例）データベース内の文字列を検索して置換
 
 ```sh
 wp search-replace https://example.com http://localhost
 ```
 
-例）データベースをエクスポート
+例）データベースをSQLファイルとしてエクスポート
 
 ```sh
 wp db export /docker/mysql/example.sql
@@ -172,7 +186,7 @@ docker-compose down -v
 
 ## Composer
 
-WordPressの他にPHPライブラリが必要な場合に使用します。
+WordPressの他にPHPライブラリが必要な場合に使用できます。
 
 ### パッケージのインストール
 
@@ -186,7 +200,7 @@ docker-compose exec -u www-data -w /var/www wordpress composer install
 docker-compose exec -u www-data -w /var/www wordpress bash
 ```
 
-例) phpdotenvを追加
+例）phpdotenvを追加
 
 ```sh
 composer require vlucas/phpdotenv
