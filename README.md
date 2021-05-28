@@ -7,7 +7,7 @@
 ## Usage
 
 ```sh
-npm init @fastwebapp/wordpress
+npm init @fastwebapp/wordpress@latest
 ```
 
 <!------------------------------------->
