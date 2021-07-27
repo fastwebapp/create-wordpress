@@ -17,6 +17,7 @@ services:
       - ./composer.lock:/var/www/composer.lock
     env_file: .env
     environment:
+      WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: root
