@@ -50,7 +50,7 @@
 └── var
     └── www
          ├── html (2)
-         │   ├── wp    
+         │   ├── wp
          │   ├── .htaccess
          │   └── index.php
          ├── vendor (3)
@@ -125,8 +125,6 @@ docker-compose exec -u www-data wordpress bash /docker/wordpress/init.sh
 | ディスカッション &raquo; デフォルトの投稿設定 | すべてOFF | すべてON |
 | メディア &raquo; サムネイルのサイズ &raquo; 幅 | `0` | `150` |
 | メディア &raquo; サムネイルのサイズ &raquo; 高さ | `0` | `150` |
-| メディア &raquo; 中サイズ &raquo; 幅の上限 | `0` | `300` |
-| メディア &raquo; 中サイズ &raquo; 高さの上限 | `0` | `300` |
 | パーマリンク設定 &raquo; 共通設定 | カスタム構造 `/%post_id%/` | 日付と投稿名 |
 
 <!------------------------------------->
