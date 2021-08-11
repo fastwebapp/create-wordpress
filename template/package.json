@@ -1,8 +1,8 @@
 {
   "private": true,
   "devDependencies": {
-    "@prettier/plugin-php": "^0.17.2",
-    "eslint": "^7.31.0",
+    "@prettier/plugin-php": "^0.17.3",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "prettier": "^2.3.2",
