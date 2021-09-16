@@ -31,6 +31,7 @@ wp option update thumbnail_size_h "0" --allow-root
 
 # パーマリンク設定
 wp option update permalink_structure "/%post_id%/" --allow-root
+wp rewrite flush --allow-root
 
 # 不要なテーマを削除
 wp theme delete twentynineteen --allow-root
