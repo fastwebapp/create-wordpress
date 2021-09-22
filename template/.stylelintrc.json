@@ -2,10 +2,7 @@
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-rational-order",
-    "stylelint-prettier/recommended"
+    "stylelint-config-prettier"
   ],
-  "plugins": ["stylelint-order"],
-  "rules": {
-    "prettier/prettier": true
-  }
+  "plugins": ["stylelint-order"]
 }

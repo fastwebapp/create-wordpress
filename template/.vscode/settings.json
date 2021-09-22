@@ -1,14 +1,13 @@
 {
-  "[php]": {
-    "editor.formatOnSave": true
-  },
   "css.validate": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
-  "eslint.validate": ["javascript"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "javascript.validate.enable": false,
+  "prettier.prettierPath": "node_modules/prettier",
   "search.exclude": {
     "**/wp-admin": true,
     "**/wp-content/languages": true,
