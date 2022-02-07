@@ -34,8 +34,8 @@ wp option update permalink_structure "/%post_id%/" --allow-root
 wp rewrite flush --allow-root
 
 # 不要なテーマを削除
-wp theme delete twentynineteen --allow-root
 wp theme delete twentytwenty --allow-root
+wp theme delete twentytwentyone --allow-root
 
 # 不要なプラグインを削除
 wp plugin delete akismet --allow-root
@@ -43,3 +43,6 @@ wp plugin delete hello.php --allow-root
 
 # 不要な投稿・固定ページを削除
 wp post delete 1 2 3 --force
+
+# テーマの翻訳をアップデート
+wp language theme update --all --allow-root
