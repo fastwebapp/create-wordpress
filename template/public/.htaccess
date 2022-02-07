@@ -1,4 +1,5 @@
 # BEGIN WordPress
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -20,14 +21,14 @@ RewriteRule . /index.php [L]
   RewriteRule (.+)\.(jpe?g|png)$ %{REQUEST_FILENAME}.webp [T=image/webp,E=accept:1,L]
 </IfModule>
 
-<ifModule mod_headers.c>
+<IfModule mod_headers.c>
   Header append Vary Accept env=REDIRECT_accept
   <FilesMatch "\.(jpe?g|png|webp)$">
     Header set Cache-Control "max-age=31536000"
   </FilesMatch>
 </IfModule>
 
-<ifModule mod_expires.c>
+<IfModule mod_expires.c>
   ExpiresActive On
   <FilesMatch "\.(jpe?g|png|webp)$">
     ExpiresDefault "access plus 1 year"
