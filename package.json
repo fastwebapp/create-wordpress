@@ -17,6 +17,9 @@
   "bin": {
     "create-wordpress": "index.js"
   },
+  "scripts": {
+    "clean": "./package-clean.sh"
+  },
   "dependencies": {
     "prompts": "^2.4.2"
   },
