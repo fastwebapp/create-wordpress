@@ -13,9 +13,9 @@
 ### 推奨（VS Codeの拡張機能）
 
 - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=editorconfig.editorconfig)
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 
 <!------------------------------------->
 
@@ -26,7 +26,7 @@
 ```
 ├── docker (1)
 │   ├── mysql
-│   │   └── init.sql
+│   │   └── init.sql.gz
 │   └── wordpress
 │       └── init.sh
 ├── public (2)
@@ -44,7 +44,7 @@
 ```
 ├── docker (1)
 │   ├── mysql
-│   │   └── init.sql
+│   │   └── init.sql.gz
 │   └── wordpress
 │       └── init.sh
 └── var
@@ -63,7 +63,7 @@
 
 | パス | 説明 |
 | - | - |
-| `docker/mysql/init.sql` | Dockerコンテナの起動時に実行されるSQLファイル |
+| `docker/mysql/init.sql.gz` | Dockerコンテナの起動時に実行されるSQLファイル |
 | `docker/wordpress/init.sh` | WordPressのインストール用のスクリプト |
 | `public` | ウェブサーバのドキュメントルート |
 | `public/wp` | WordPressのインストール場所 |
@@ -171,7 +171,7 @@ exit
 ### Dockerコンテナのデータベースを保存
 
 ```sh
-docker-compose exec -u www-data wordpress wp db export /docker/mysql/init.sql
+docker-compose exec -u www-data wordpress bash -c "wp db export - | gzip -c > /docker/mysql/init.sql.gz"
 ```
 
 ### Dockerコンテナを終了
