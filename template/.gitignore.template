@@ -199,8 +199,9 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/macos,node,windows
 
 ### Project ###
+/public/**/wp-content/ai1wm-backups/*.wpress
+/public/**/wp-content/plugins/siteguard/really-simple-captcha/tmp
+/public/**/wp-content/uploads
 /vendor
-wp-content/ai1wm-backups/*.wpress
-wp-content/plugins/siteguard/really-simple-captcha/tmp
-wp-content/uploads
 !/public/**/dist
+!/public/**/wp-content/plugins/wp-mail-smtp-pro/**/logs
