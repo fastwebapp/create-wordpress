@@ -1,4 +1,5 @@
 # プロジェクト名
+
 プロジェクトに合わせて適宜内容を変更してください。
 
 <!------------------------------------->
@@ -24,52 +25,55 @@
 ### リポジトリ内の配置
 
 ```
-├── docker (1)
+├── .env (1)
+├── composer.json (2)
+├── composer.lock (3)
+├── docker (4)
 │   ├── mysql
 │   │   └── init.sql.gz
 │   └── wordpress
-│       └── init.sh
-├── public (2)
-│   ├── wp
+│        ├── init.sh
+│        └── php.ini
+├── public (5)
 │   ├── .htaccess
-│   └── index.php
-├── vendor (3)
-├── .env (4)
-├── composer.json (5)
-└── composer.lock (6)
+│   ├── index.php
+│   └── wp
+└── vendor (6)
 ```
 
 ### Dockerコンテナ内の配置
 
 ```
-├── docker (1)
+├── docker (4)
 │   ├── mysql
 │   │   └── init.sql.gz
 │   └── wordpress
-│       └── init.sh
+│        ├── init.sh
+│        └── php.ini
 └── var
-    └── www
-         ├── html (2)
-         │   ├── wp
-         │   ├── .htaccess
-         │   └── index.php
-         ├── vendor (3)
-         ├── .env (4)
-         ├── composer.json (5)
-         └── composer.lock (6)
+     └── www
+          ├── .env (1)
+          ├── composer.json (2)
+          ├── composer.lock (3)
+          ├── html (5)
+          │   ├── .htaccess
+          │   ├── index.php
+          │   └── wp
+          └── vendor (6)
 ```
 
 ### 主なファイル・ディレクトリ
 
 | パス | 説明 |
 | - | - |
+| `.env` | 環境変数の設定 |
+| `composer.json` | Composerパッケージの設定 |
 | `docker/mysql/init.sql.gz` | Dockerコンテナの起動時に実行されるSQLファイル |
 | `docker/wordpress/init.sh` | WordPressのインストール用のスクリプト |
+| `docker/wordpress/php.ini` | PHPの設定 |
 | `public` | ウェブサーバのドキュメントルート |
 | `public/wp` | WordPressのインストール場所 |
 | `vendor` | Composerパッケージのインストール場所 |
-| `.env` | 環境変数の設定 |
-| `composer.json` | Composerパッケージの設定 |
 
 <!------------------------------------->
 
@@ -123,8 +127,6 @@ docker-compose exec -u www-data wordpress bash /docker/wordpress/init.sh
 | 一般 &raquo; 時刻形式 | `H:i` | カスタム `g:i a` |
 | 一般 &raquo; 週の始まり | 日曜日 | 月曜日 |
 | ディスカッション &raquo; デフォルトの投稿設定 | すべてOFF | すべてON |
-| メディア &raquo; サムネイルのサイズ &raquo; 幅 | `0` | `150` |
-| メディア &raquo; サムネイルのサイズ &raquo; 高さ | `0` | `150` |
 | パーマリンク設定 &raquo; 共通設定 | カスタム構造 `/%post_id%/` | 日付と投稿名 |
 
 <!------------------------------------->
