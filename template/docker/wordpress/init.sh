@@ -25,10 +25,6 @@ wp option update default_pingback_flag "0" --allow-root
 wp option update default_ping_status "closed" --allow-root
 wp option update default_comment_status "closed" --allow-root
 
-# メディア設定
-wp option update thumbnail_size_w "0" --allow-root
-wp option update thumbnail_size_h "0" --allow-root
-
 # パーマリンク設定
 wp option update permalink_structure "/%post_id%/" --allow-root
 wp rewrite flush --allow-root
