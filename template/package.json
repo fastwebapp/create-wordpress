@@ -1,5 +1,8 @@
 {
   "private": true,
+  "scripts": {
+    "log": "cp /dev/null public/wp/wp-content/debug.log && tail -f public/wp/wp-content/debug.log"
+  },
   "devDependencies": {
     "@prettier/plugin-php": "^0.18.8",
     "eslint": "^8.18.0",
