@@ -30,10 +30,11 @@
 ├── composer.lock (3)
 ├── docker (4)
 │   ├── mysql
-│   │   └── init.sql.gz
+│   │   └── initdb.d
+│   │       └── init.sql.gz
 │   └── wordpress
-│        ├── init.sh
-│        └── php.ini
+│       ├── init.sh
+│       └── php.ini
 ├── public (5)
 │   ├── .htaccess
 │   ├── index.php
@@ -46,20 +47,21 @@
 ```
 ├── docker (4)
 │   ├── mysql
-│   │   └── init.sql.gz
+│   │   └── initdb.d
+│   │       └── init.sql.gz
 │   └── wordpress
-│        ├── init.sh
-│        └── php.ini
+│       ├── init.sh
+│       └── php.ini
 └── var
-     └── www
-          ├── .env (1)
-          ├── composer.json (2)
-          ├── composer.lock (3)
-          ├── html (5)
-          │   ├── .htaccess
-          │   ├── index.php
-          │   └── wp
-          └── vendor (6)
+    └── www
+        ├── .env (1)
+        ├── composer.json (2)
+        ├── composer.lock (3)
+        ├── html (5)
+        │   ├── .htaccess
+        │   ├── index.php
+        │   └── wp
+        └── vendor (6)
 ```
 
 ### 主なファイル・ディレクトリ
@@ -68,7 +70,7 @@
 | - | - |
 | `.env` | 環境変数の設定 |
 | `composer.json` | Composerパッケージの設定 |
-| `docker/mysql/init.sql.gz` | Dockerコンテナの起動時に実行されるSQLファイル |
+| `docker/mysql/initdb.d/init.sql.gz` | Dockerコンテナの起動時に実行されるSQLファイル |
 | `docker/wordpress/init.sh` | WordPressのインストール用のスクリプト |
 | `docker/wordpress/php.ini` | PHPの設定 |
 | `public` | ウェブサーバのドキュメントルート |
@@ -161,7 +163,7 @@ wp search-replace https://example.com http://localhost
 例）データベースをSQLファイルとしてエクスポート
 
 ```sh
-wp db export /docker/mysql/example.sql
+wp db export /docker/mysql/initdb.d/example.sql
 ```
 
 Dockerコンテナから出る
@@ -173,7 +175,7 @@ exit
 ### Dockerコンテナのデータベースを保存
 
 ```sh
-docker-compose exec -u www-data wordpress bash -c "wp db export - | gzip -c > /docker/mysql/init.sql.gz"
+docker-compose exec -u www-data wordpress bash -c "wp db export - | gzip -c > /docker/mysql/initdb.d/init.sql.gz"
 ```
 
 ### Dockerコンテナを終了
