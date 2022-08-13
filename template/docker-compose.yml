@@ -44,13 +44,13 @@ services:
       PMA_PASSWORD: root
 
   mysql:
-    image: mysql:5.7
-    platform: linux/amd64
+    image: ghcr.io/fastwebapp/mysql5:latest
     volumes:
       - mysql:/var/lib/mysql
-      - ./docker/mysql:/docker-entrypoint-initdb.d
+      - ./docker/mysql/initdb.d:/docker-entrypoint-initdb.d
     environment:
       MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_HOST: '%'
       MYSQL_ROOT_PASSWORD: root
 
   mailhog:
