@@ -1,7 +1,7 @@
 #!/bin/sh
 
 rm -rfv \
-  template/docker/mysql/initdb.d/*.sql
+  template/docker/mysql/initdb.d/*.sql\
   template/node_modules\
   template/public/wp/wp-admin\
   template/public/wp/wp-content\
@@ -12,5 +12,5 @@ rm -rfv \
   template/public/wp/wp-*.php\
   template/public/wp/xmlrpc.php\
   template/vendor\
-  template/.env
+  template/.env\
   template/package-lock.json
