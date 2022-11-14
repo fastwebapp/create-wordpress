@@ -1,6 +1,6 @@
 {
   "name": "@fastwebapp/create-wordpress",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "license": "GPL-2.0-or-later",
   "type": "module",
   "engines": {
@@ -24,7 +24,7 @@
     "prompts": "^2.4.2"
   },
   "devDependencies": {
-    "eslint": "^8.21.0",
+    "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.7.1"
   }

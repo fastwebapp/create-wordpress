@@ -4,12 +4,12 @@
     "log": "cp /dev/null public/wp/wp-content/debug.log && tail -f public/wp/wp-content/debug.log"
   },
   "devDependencies": {
-    "@prettier/plugin-php": "^0.18.9",
-    "eslint": "^8.21.0",
+    "@prettier/plugin-php": "^0.19.2",
+    "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.7.1",
-    "stylelint": "^14.10.0",
-    "stylelint-config-prettier": "^9.0.3",
+    "stylelint": "^14.15.0",
+    "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^9.0.0",
     "stylelint-order": "^5.0.0"
