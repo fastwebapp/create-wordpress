@@ -25,27 +25,23 @@
 ### リポジトリ内の配置
 
 ```
-├── .env (1)
-├── composer.json (2)
-├── composer.lock (3)
-├── docker (4)
+├── docker (1)
 │   ├── mysql
 │   │   └── initdb.d
 │   │       └── init.sql.gz
 │   └── wordpress
 │       ├── init.sh
 │       └── php.ini
-├── public (5)
-│   ├── .htaccess
-│   ├── index.php
-│   └── wp
-└── vendor (6)
+└── public (2)
+    ├── .htaccess
+    ├── index.php
+    └── wp
 ```
 
 ### Dockerコンテナ内の配置
 
 ```
-├── docker (4)
+├── docker (1)
 │   ├── mysql
 │   │   └── initdb.d
 │   │       └── init.sql.gz
@@ -54,28 +50,21 @@
 │       └── php.ini
 └── var
     └── www
-        ├── .env (1)
-        ├── composer.json (2)
-        ├── composer.lock (3)
-        ├── html (5)
-        │   ├── .htaccess
-        │   ├── index.php
-        │   └── wp
-        └── vendor (6)
+        └── html (2)
+            ├── .htaccess
+            ├── index.php
+            └── wp
 ```
 
 ### 主なファイル・ディレクトリ
 
 | パス | 説明 |
 | - | - |
-| `.env` | 環境変数の設定 |
-| `composer.json` | Composerパッケージの設定 |
 | `docker/mysql/initdb.d/init.sql.gz` | Dockerコンテナの起動時に実行されるSQLファイル |
 | `docker/wordpress/init.sh` | WordPressのインストール用のスクリプト |
 | `docker/wordpress/php.ini` | PHPの設定 |
 | `public` | ウェブサーバのドキュメントルート |
 | `public/wp` | WordPressのインストール場所 |
-| `vendor` | Composerパッケージのインストール場所 |
 
 <!------------------------------------->
 
@@ -182,47 +171,4 @@ docker-compose exec -u www-data wordpress bash -c "wp db export - | gzip -c > /d
 
 ```sh
 docker-compose down -v
-```
-
-<!------------------------------------->
-
-## Composer
-
-WordPressの他にPHPライブラリが必要な場合に使用できます。
-
-### パッケージのインストール
-
-```sh
-docker-compose exec -u www-data -w /var/www wordpress composer install
-```
-
-### Dockerコンテナに入る
-
-```sh
-docker-compose exec -u www-data -w /var/www wordpress bash
-```
-
-例）phpdotenvを追加
-
-```sh
-composer require vlucas/phpdotenv
-```
-
-Dockerコンテナから出る
-
-```sh
-exit
-```
-
-### WordPressでの利用方法
-
-`public/wp/wp-config.php` で `vendor/autoload.php` を読み込みます。
-
-```php
-define('COMPOSER_WORKING_DIR', dirname(dirname(__DIR__)));
-require COMPOSER_WORKING_DIR . '/vendor/autoload.php';
-
-// 例）phpdotenvを利用
-$dotenv = Dotenv\Dotenv::createImmutable(COMPOSER_WORKING_DIR);
-$dotenv->load();
 ```
